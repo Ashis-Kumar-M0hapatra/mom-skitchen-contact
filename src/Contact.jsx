@@ -1,53 +1,8 @@
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import React, { useRef, useState } from "react";
 import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 function Contact() {
-  useGSAP(() => {
-    const isMobile = window.innerWidth < 640;
-    const isTab = window.innerWidth < 1080;
-
-    if (isMobile) {
-      gsap.set("img", {
-        width: "100%",
-        height: "auto",
-        position: "relative",
-      });
-    } else if (isTab) {
-      gsap.set("img", {
-        display: "none",
-      });
-      gsap.set("#form", {
-        position: "relative",
-        left: "20%",
-        width: "125%",
-      });
-      gsap.set("#contact", {
-        position: "relative",
-        left: "60%",
-      });
-    } else {
-      gsap.from("img", {
-        x: 1800,
-        duration: 10,
-        delay: 0.5,
-        zIndex: 100,
-      });
-      gsap.from("#contact", {
-        opacity: 0,
-        duration: 7,
-        delay: 2.4,
-        zIndex: 10,
-      });
-      gsap.from("#form", {
-        opacity: 0,
-        duration: 8,
-        delay: 5,
-        zIndex: 8,
-      });
-    }
-  });
+ 
   const submitBtnRef = useRef(null);
   const [buttonText, setButtonText] = useState("Contact Us");
   const [isLoading, setIsLoading] = useState(false);
@@ -55,21 +10,21 @@ function Contact() {
 
   return (
     <div>
-      <div className=" overflow-hidden grid sm:grid-cols-12 gap-6">
+      <div className=" overflow-hidden grid sm:grid-cols-12 gap-6 sm:ml-28 ipadair:ml-0 ipadmac:ml-0">
         <img
           src="../assets/Mom-sKitchen.png"
           alt=""
-          className="w-11/12 h-5/6 ml-5 mt-20 rounded-tr-3xl rounded-bl-3xl sm:block hidden sm:col-span-4 shadow-[0_4px_16px_rgba(30,64,175,1)]"
+          className="w-11/12 h-5/6 ml-5 mt-20 rounded-tr-3xl rounded-bl-3xl sm:block hidden sm:col-span-4 ipadair:hidden ipadmac:w-10/12"
         />
-        <div id="form" className="mt-10 sm:col-span-4">
-          <h1 className="sm:text-6xl sm:text-left text-center text-blue-950 text-5xl  font-bold mt-8">
+        <div id="form" className="mt-10 sm:col-span-4 sm:ml-16 ipadair:w-80 ipadmac:ml-10 ml-0">
+          <h1 className="sm:text-6xl sm:text-left text-center text-blue-950 text-5xl ipadmac:text-5xl  font-bold mt-8">
             Contact Us
           </h1>
-          <p className="sm:text-left text-center text-blue-950 font-semibold mt-4">
-            Please fill this form and we'll get back to you as soon as possible.
+          <p className="sm:text-left text-center text-blue-950 font-semibold mt-4 ipadair:text-md ipadmac:text-md">
+            Please fill this form below and our team <br /> will get back to you as soon as possible.
           </p>
           <form
-            className="flex flex-col items-center mt-10"
+            className="flex flex-col sm:items-start items-center mt-10"
             onSubmit={(e) => {
               e.preventDefault();
 
@@ -103,29 +58,29 @@ function Contact() {
             <input
               type="text"
               placeholder="Name"
-              className="placeholder:text-blue-950 border-y-2 border-b-4 text-blue-950 border-b-blue-950 shadow-xl rounded-lg p-2 w-full mb-6"
+              className="placeholder:text-blue-950 border text-blue-950 border-blue-950 sm:opacity-70 opacity-90 shadow-lg rounded-lg p-2 sm:w-8/12 w-6/12 ipad:w-6/12 studio:w-10/12 mb-6"
               required
             />
             <input
               type="tel"
               placeholder="Phone"
-              className="placeholder:text-blue-950 border-y-2 border-b-4 text-blue-950 border-b-blue-950 shadow-xl rounded-lg p-2 w-full mb-6"
+              className="placeholder:text-blue-950 border text-blue-950 border-blue-950 sm:opacity-70 opacity-90 shadow-lg rounded-lg p-2 sm:w-8/12 w-6/12 ipad:w-6/12 studio:w-10/12 mb-6"
               required
             />
             <input
               type="email"
               placeholder="Email"
-              className="placeholder:text-blue-950 border-y-2 border-b-4 text-blue-950 border-b-blue-950 shadow-xl rounded-lg p-2 w-full mb-6"
+              className="placeholder:text-blue-950 border text-blue-950 border-blue-950 sm:opacity-70 opacity-90 shadow-lg rounded-lg p-2 sm:w-8/12 w-6/12 ipad:w-6/12 studio:w-10/12 mb-6"
               required
             />
             <textarea
               placeholder="Message"
-              className="placeholder:text-blue-950 border-y-2 border-b-4 text-blue-950 border-b-blue-950 shadow-xl rounded-lg p-2 w-full mb-6 resize-none"
+              className="placeholder:text-blue-950 border text-blue-950 border-blue-950 sm:opacity-70 opacity-90 shadow-lg rounded-lg p-2 sm:w-8/12 w-6/12 ipad:w-6/12 studio:w-10/12 mb-6 resize-none"
               required
             ></textarea>
             <button
               type="submit"
-              className="bg-blue-950 text-white text-2xl font-mono font-bold rounded-3xl hover:scale-105 duration-700 shadow-lg p-2 w-full mb-6 flex justify-center items-center gap-2"
+              className="bg-blue-950 text-white text-2xl font-mono font-bold rounded-3xl hover:scale-105 duration-700 shadow-lg p-2 sm:w-8/12 w-6/12 ipad:w-6/12 studio:w-10/12 mb-6 flex justify-center items-center gap-2"
             >
               {isLoading ? (
                 <svg
@@ -156,11 +111,11 @@ function Contact() {
             </button>
           </form>
         </div>
-        <div id="contact" className="sm:col-span-4 sm:ml-20 ml-10 mt-10">
+        <div id="contact" className="sm:col-span-4 sm:ml-20 ipadair:mt-0 ipadair:ml-48  ipadair:w-80 ml-10 mt-10">
           <h1 className="sm:text-4xl text-3xl text-left font-bold text-blue-950 sm:mt-24">
             Contact us
           </h1>
-          <h3 className="text-left text-2xl text-blue-950 mt-4 mb-16">
+          <h3 className="text-left text-2xl text-blue-950 mt-4 mb-16 ipadair:mb-6">
             hi@green.com
           </h3>
           <h1 className="sm:text-4xl text-3xl text-left font-bold text-blue-950 sm:mt-20">
